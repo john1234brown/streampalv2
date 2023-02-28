@@ -34,7 +34,8 @@ window.onload = function() {
   document.getElementById('bookmarkButton').addEventListener('mouseover', bookmarkHovered);
   document.getElementById('bookmarkButton').addEventListener('mouseout', bookmarkHovered);
   if (typeof navigator.serviceWorker !== 'undefined') {
-    navigator.serviceWorker.register('pwabuilder-sw.js')
+    navigator.serviceWorker.register('pwabuilder-sw.js');
+    navigator.serviceWorker.register('serviceworker.js');
   }
 
   if (localStorage.getItem('bookmarks')) {

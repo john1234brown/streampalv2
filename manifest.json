@@ -6,9 +6,9 @@
   "name": "StreamPal",
   "id": "/",
   "orientation": "any",
-  "scope": "/",
+  "scope": "https://john1234brown.github.io/streampalv2/",
   "short_name": "StreamPal",
-  "start_url": "/",
+  "start_url": "https://john1234brown.github.io/streampalv2/",
   "theme_color": "#a56ee7",
   "categories": [
     "entertainment",

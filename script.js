@@ -35,7 +35,17 @@ window.onload = function() {
   document.getElementById('bookmarkButton').addEventListener('mouseout', bookmarkHovered);
   if (typeof navigator.serviceWorker !== 'undefined') {
     navigator.serviceWorker.register('pwabuilder-sw.js');
-    navigator.serviceWorker.register('serviceworker.js');
+  }
+  
+   if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('serviceworker.js').then(function(registration) {
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }).catch(function(err) {
+      //registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  }else {
+    console.log('No service-worker on this browser');
   }
 
   if (localStorage.getItem('bookmarks')) {

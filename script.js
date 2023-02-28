@@ -37,7 +37,7 @@ window.onload = function() {
     navigator.serviceWorker.register('pwabuilder-sw.js');
   }
   
-   if ('serviceWorker' in navigator) {
+   /*if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('serviceworker.js').then(function(registration) {
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }).catch(function(err) {
@@ -46,7 +46,7 @@ window.onload = function() {
     });
   }else {
     console.log('No service-worker on this browser');
-  }
+  }*/
 
   if (localStorage.getItem('bookmarks')) {
     upgradeBookmarkVersion();

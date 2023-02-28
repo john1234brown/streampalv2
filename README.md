@@ -2,6 +2,7 @@
 Free Streaming Search Engine Website called StreamPal which doesnt host any files directly on its site.
 
 # Current Features
+- Functioning Progressive Web App
 - Watch History
 - Bookmarks
 - Show all

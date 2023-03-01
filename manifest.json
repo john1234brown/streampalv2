@@ -475,8 +475,5 @@
   "shortcuts": [],
   "lang": "en",
   "iarc_rating_id": "21",
-  "prefer_related_applications": false,
-  "display_override": [
-    "browser"
-  ]
+  "prefer_related_applications": false
 }

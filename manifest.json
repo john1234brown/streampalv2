@@ -1,7 +1,7 @@
 {
   "background_color": "#363845",
   "description": "All your streaming needs in the power of a progressive web app",
-  "dir": "auto"
+  "dir": "auto",
   "name": "StreamPal",
   "id": "https://john1234brown.github.io/",
   "orientation": "any",

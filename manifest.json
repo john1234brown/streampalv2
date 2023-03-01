@@ -2,7 +2,7 @@
   "background_color": "#363845",
   "description": "All your streaming needs in the power of a progressive web app",
   "dir": "auto",
-  "display": "standalone",
+  "display": "browser",
   "name": "StreamPal",
   "id": "https://john1234brown.github.io/",
   "orientation": "any",
@@ -477,6 +477,6 @@
   "iarc_rating_id": "21",
   "prefer_related_applications": false,
   "display_override": [
-    "standalone"
+    "browser"
   ]
 }

@@ -24,7 +24,10 @@ Free Streaming Search Engine Website called StreamPal which doesnt host any file
 - Once the Tools are completed like a script to help auto add to ipfs file folders and publish for you etc.. along with The File Structure Generator Tool which will help generate the Folder structures properly
 - Along with including URL list editor tool to help with providing URLS for the sources and eventually i imagine someone will take this strucuture design and automate the upload of files and storing of urls to be a URL provider
 
-
+#   Updates
+# 3/11/23
+- Currently have a working Electron Node JS Application for File providers to be able to provide through smee just finishing on touching it up and making it easier to use with some drag and drop functions before releasing along with some configuration options which is going to require me to redo some of it quite a bit of its coding actually so it will be coming out soon Also Another Project will be working on is the Cache Database Provider incase there node is not receiving smee msgs but they where cached by database provider the database provider will ensure the file providers files will be accessible! basically this just listens in on them keeps a db of there ping.json Structure each provider you have that can provide a file you post a array list of them to the smee ensuring the system stays running! probably gonna have to include file size checks to ensure files wont go over something like 120mbs or something like this!
+- if you want to peep the nodeJS application you can at the replit link here https://replit.com/@JohnsFriends/StreamPal-Browser-Tool-In-NodeJS?v=1 havent pushed the electron update to the replit yet but will soon once i finish up the final touches!
 
 # Our Goals
 - We wish to decentralize video streaming of movies and tv shows along with making it as mobile friendly as netflix or plutotv or tubi but instead of using a app you can do it straight through the browser

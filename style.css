@@ -7,6 +7,14 @@ body {
   margin: 0rem;
 }
 
+.card2[data-tag='checked'] { 
+  /*transition: .5s;*/
+  background-color: #000000;
+  border: #531a99;
+  color:#7300ff;
+}
+
+
 /*.body{ 
 
  

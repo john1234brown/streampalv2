@@ -1020,16 +1020,17 @@ function getepisodes(n) {
   //console.log(n);
   //console.log(result);
   document.getElementById("listofepisodes").innerHTML = "";
+  var episodecookie = document.cookie.split('; ').find((row) => row.startsWith('episode='))?.split('=')[1];
   for (var i = 0; result.episode_count > i; i++) {
     const newelement = document.createElement("div");
     newelement.innerHTML = `Episode ${(i + 1)}`;
     newelement.setAttribute("class", "card2");
+    if (parseInt(episode) === (i + 1)) { newelement.setAttribute('') }
     newelement.setAttribute("onclick", `updateTvPlayer(${n}, "${(i + 1)}");`);
     document.getElementById("listofepisodes").appendChild(newelement);
   }
   if (document.cookie.split('; ').find((row) => row.startsWith('episode'))) {
     var episodecookie = document.cookie.split('; ').find((row) => row.startsWith('episode='))?.split('=')[1];
-    if (parseInt(episodecookie) === parseInt(i+1)){newelement.setAttribute('data-tag', 'checked');}
     updateTvPlayer(n, episodecookie);
     //updateTvAdServers(document.cookie.split('; ').find((row) => row.startsWith('watchId='))?.split('=')[1], n, episodecookie);
     //console.log('Howdy dudoidoo');

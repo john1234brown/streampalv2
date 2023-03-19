@@ -916,15 +916,16 @@ function updateMovieContainer() {
       } catch (e) { console.log(e); }
     }
 
-    if (server >= 6) {
+    if (server = 6) {
       try {
-        //document.getElementById("watchTvPlayer").removeAttribute('sandbox');
-        var Loc = (server - 6);
+        document.getElementById("watchTvPlayer").removeAttribute('sandbox');
+        document.getElementById("watchTvPlayer").setAttribute('src', `https://superembed.streampal.repl.co/?video_id=${id}&tmdb=1`);
+        /*var Loc = (server - 6); // Has been deprecated tdue to superembed deprecating there json api service!
         if (adServersList[Loc].server === "doodstream" || adServersList[Loc].server === "streamsb" || adServersList[Loc].server === "highload" || adServersList[Loc].server === "fembed" || adServersList[Loc].server === "vidcloud" || adServersList[Loc].server === "mixdrop") {
           //console.log("Its sandbox detection so removing sandbox please have ad blocker or brave browser recommended!");
           document.getElementById("watchMoviePlayer").removeAttribute('sandbox');
         } else { document.getElementById("watchTvPlayer").setAttribute('sandbox', "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"); }
-        document.getElementById("watchMoviePlayer").setAttribute('src', adServersList[Loc].url);
+        document.getElementById("watchMoviePlayer").setAttribute('src', adServersList[Loc].url);*/
       } catch (e) { return; }
     }
   }
@@ -1056,6 +1057,8 @@ function getTvExternalIds(id) {
     });
 }
 
+
+// Is deprecated no longer needed Superembed deprecated there json api!
 function updateMovieAdServers(id) {
   if (AdServersInfo.id !== id) {
     fetch(`https://private-anon-a708459cf9-superembed.apiary-proxy.com/?type=tmdb&id=${id}&max_results=5`).then((response) => response.json()).then((data) => {
@@ -1099,7 +1102,7 @@ function updateMovieAdServers(id) {
     return;
   } else { return; }
 }
-
+// Is deprecated no longer needed Superembed deprecated there json api!
 function updateTvAdServers(id, season, episode) {
   if (AdServersInfo.id !== id || AdServersInfo.ep !== episode || AdServersInfo.season !== season) {
     fetch(`https://private-anon-a708459cf9-superembed.apiary-proxy.com/?type=tmdb&id=${id}&season=${season}&episode=${episode}&max_results=5`).then((response) => response.json()).then((data) => {
@@ -1200,15 +1203,16 @@ function updateTvPlayer(season, episode) {
     } catch (e) { return; }
   }
 
-  if (server >= 6) {
+  if (server = 6) {
     try {
-      //document.getElementById("watchTvPlayer").removeAttribute('sandbox');
-      var Loc = (server - 6);
+      document.getElementById("watchTvPlayer").removeAttribute('sandbox');
+      document.getElementById("watchTvPlayer").setAttribute('src', `https://superembed.streampal.repl.co/?video_id=${id}&tmdb=1&s=${season}&e=${episode}`);
+      /*var Loc = (server - 6);
       if (adServersList[Loc].server === "doodstream" || adServersList[Loc].server === "streamsb" || adServersList[Loc].server === "highload" || adServersList[Loc].server === "fembed" || adServersList[Loc].server === "vidcloud" || adServersList[Loc].server === "mixdrop") {
         //console.log("Its sandbox detection so removing sandbox please have ad blocker or brave browser recommended!");
         document.getElementById("watchTvPlayer").removeAttribute('sandbox');
       } else { document.getElementById("watchTvPlayer").setAttribute('sandbox', "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"); }
-      document.getElementById("watchTvPlayer").setAttribute('src', adServersList[Loc].url);
+      document.getElementById("watchTvPlayer").setAttribute('src', adServersList[Loc].url);*/
     } catch (e) { return; }
   }
 }

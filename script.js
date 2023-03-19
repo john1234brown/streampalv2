@@ -1025,7 +1025,7 @@ function getepisodes(n) {
     const newelement = document.createElement("div");
     newelement.innerHTML = `Episode ${(i + 1)}`;
     newelement.setAttribute("class", "card2");
-    if (parseInt(episode) === (i + 1)) { newelement.setAttribute('') }
+    if (parseInt(episode) === (i + 1)) { newelement.setAttribute('data-tag', 'checked'); }
     newelement.setAttribute("onclick", `updateTvPlayer(${n}, "${(i + 1)}");`);
     document.getElementById("listofepisodes").appendChild(newelement);
   }

@@ -860,7 +860,7 @@ function updateMovieContainer() {
     document.getElementById("watchTvPlayer").setAttribute('style', 'display: none;');
     const cookieValue = document.cookie.split('; ').find((row) => row.startsWith('watchId='))?.split('=')[1];
     id = cookieValue;
-    updateMovieAdServers(id);
+    //updateMovieAdServers(id);
     updateHistory(id, "movie", null, null);
     if (server === 1) {
       fetch(`https://api.themoviedb.org/3/movie/${id}/external_ids`, {
@@ -1029,7 +1029,7 @@ function getepisodes(n) {
   }
   if (document.cookie.split('; ').find((row) => row.startsWith('episode'))) {
     var episodecookie = document.cookie.split('; ').find((row) => row.startsWith('episode='))?.split('=')[1];
-    if (parseInt(episodecookie)===parseInt(i+1)){newelement.setAttribute('data-tag', 'checked');}
+    if (parseInt(episodecookie) === parseInt(i+1)){newelement.setAttribute('data-tag', 'checked');}
     updateTvPlayer(n, episodecookie);
     //updateTvAdServers(document.cookie.split('; ').find((row) => row.startsWith('watchId='))?.split('=')[1], n, episodecookie);
     //console.log('Howdy dudoidoo');
@@ -1155,7 +1155,7 @@ function updateTvPlayer(season, episode) {
   var id = cookieValue;
   bookmarkInit();
   updateHistory(id, "tv", season, episode);
-  updateTvAdServers(id, season, episode);
+  //updateTvAdServers(id, season, episode);
   //updateHistory(id, season, episode);
   if (server === 1) {
     fetch(`https://api.themoviedb.org/3/tv/${id}/external_ids`, {

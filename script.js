@@ -848,7 +848,7 @@ function updateSearchContainerbySearch() {
 function updateMovieContainer() {
   bookmarkInit();
   var id; //Here we will load it from the document cookies
-  //var season = document.cookie.split('; ').find((row) => row.startsWith('season='))?.split('=')[1];
+  var server = parseInt(document.cookie.split('; ').find((row) => row.startsWith('server='))?.split('=')[1]);
 
   if (document.cookie.split('; ').find((rowc) => rowc.startsWith('watchType=movie'))) {
     try {
@@ -920,12 +920,13 @@ function updateMovieContainer() {
       try {
         document.getElementById("watchTvPlayer").removeAttribute('sandbox');
         document.getElementById("watchTvPlayer").setAttribute('src', `https://superembed.streampal.repl.co/?video_id=${id}&tmdb=1`);
-        /*var Loc = (server - 6); // Has been deprecated tdue to superembed deprecating there json api service!
+        //document.getElementById("watchTvPlayer").removeAttribute('sandbox');
+        /*var Loc = (server - 6);
         if (adServersList[Loc].server === "doodstream" || adServersList[Loc].server === "streamsb" || adServersList[Loc].server === "highload" || adServersList[Loc].server === "fembed" || adServersList[Loc].server === "vidcloud" || adServersList[Loc].server === "mixdrop") {
           //console.log("Its sandbox detection so removing sandbox please have ad blocker or brave browser recommended!");
           document.getElementById("watchMoviePlayer").removeAttribute('sandbox');
-        } else { document.getElementById("watchTvPlayer").setAttribute('sandbox', "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"); }
-        document.getElementById("watchMoviePlayer").setAttribute('src', adServersList[Loc].url);*/
+        } else { document.getElementById("watchTvPlayer").setAttribute('sandbox', "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"); }*/
+        //document.getElementById("watchMoviePlayer").setAttribute('src', adServersList[Loc].url);
       } catch (e) { return; }
     }
   }
@@ -1157,6 +1158,7 @@ function updateTvPlayer(season, episode) {
   document.cookie = "episode=" + episode + "; SameSite=strict; Secure; " + kia;
   const cookieValue = document.cookie.split('; ').find((row) => row.startsWith('watchId='))?.split('=')[1];
   var id = cookieValue;
+  var server = parseInt(document.cookie.split('; ').find((row) => row.startsWith('server='))?.split('=')[1]);
   bookmarkInit();
   updateHistory(id, "tv", season, episode);
   //updateTvAdServers(id, season, episode);
@@ -1205,14 +1207,17 @@ function updateTvPlayer(season, episode) {
 
   if (server === 6) {
     try {
-      document.getElementById("watchTvPlayer").removeAttribute('sandbox');
+      //document.getElementById("watchTvPlayer").removeAttribute('sandbox');
+      //document.getElementById("watchTvPlayer").setAttribute('sandbox', "allow-same-origin allow-scripts allow-top-navigation");
       document.getElementById("watchTvPlayer").setAttribute('src', `https://superembed.streampal.repl.co/?video_id=${id}&tmdb=1&s=${season}&e=${episode}`);
+      document.getElementById("watchTvPlayer").setAttribute('sandbox', "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation");
+      //document.getElementById("watchTvPlayer").removeAttribute('sandbox');
       /*var Loc = (server - 6);
       if (adServersList[Loc].server === "doodstream" || adServersList[Loc].server === "streamsb" || adServersList[Loc].server === "highload" || adServersList[Loc].server === "fembed" || adServersList[Loc].server === "vidcloud" || adServersList[Loc].server === "mixdrop") {
         //console.log("Its sandbox detection so removing sandbox please have ad blocker or brave browser recommended!");
         document.getElementById("watchTvPlayer").removeAttribute('sandbox');
-      } else { document.getElementById("watchTvPlayer").setAttribute('sandbox', "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"); }
-      document.getElementById("watchTvPlayer").setAttribute('src', adServersList[Loc].url);*/
+      } else { document.getElementById("watchTvPlayer").setAttribute('sandbox', "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation"); }*/
+      //document.getElementById("watchTvPlayer").setAttribute('src', adServersList[Loc].url);
     } catch (e) { return; }
   }
 }

@@ -916,7 +916,7 @@ function updateMovieContainer() {
       } catch (e) { console.log(e); }
     }
 
-    if (server = 6) {
+    if (server === 6) {
       try {
         document.getElementById("watchTvPlayer").removeAttribute('sandbox');
         document.getElementById("watchTvPlayer").setAttribute('src', `https://superembed.streampal.repl.co/?video_id=${id}&tmdb=1`);
@@ -1203,7 +1203,7 @@ function updateTvPlayer(season, episode) {
     } catch (e) { return; }
   }
 
-  if (server = 6) {
+  if (server === 6) {
     try {
       document.getElementById("watchTvPlayer").removeAttribute('sandbox');
       document.getElementById("watchTvPlayer").setAttribute('src', `https://superembed.streampal.repl.co/?video_id=${id}&tmdb=1&s=${season}&e=${episode}`);

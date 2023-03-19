@@ -33,9 +33,10 @@ window.onload = async function() {
   document.getElementById('searchbox').addEventListener('change', updateSearchContainerbySearch);
   document.getElementById('bookmarkButton').addEventListener('mouseover', bookmarkHovered);
   document.getElementById('bookmarkButton').addEventListener('mouseout', bookmarkHovered);
+  try {
   if (typeof navigator.serviceWorker !== 'undefined') {
     navigator.serviceWorker.register('pwabuilder-sw.js')
-  }
+  }} catch(e){console.log(e);}
 
   if (localStorage.getItem('bookmarks')) {
     upgradeBookmarkVersion();

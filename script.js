@@ -970,6 +970,10 @@ function updateTvContainer() {
             seasonelement.setAttribute("class", "card2");
             seasonelement.setAttribute("onclick", `getepisodes(${json.season_number})`);
             //newelement.setAttribute("onclick", `cardclicked(${json.id}, "${json.name}", "tv");`);
+            if (parseInt(season) === parseInt(json.season_number)) {
+            console.log('season is the same making it checked!');
+            seasonelement.setAttribute('data-tag', 'checked');
+          }
             document.getElementById("listofseasons").appendChild(seasonelement);
             //Then we for loop for each episode count and append the episode amount to the object!
             /*for(var i=0; json.episode_count> i; i++){

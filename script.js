@@ -897,7 +897,7 @@ function updateMovieContainer() {
 
     if (server === 5) {
       try {
-        document.getElementById("WatchMoviePlayer").removeAttribute('sandbox');
+        document.getElementById("watchMoviePlayer").removeAttribute('sandbox');
         fetch(`https://api.themoviedb.org/3/movie/${id}/external_ids`, {
           method: 'GET',
           headers: {
@@ -906,7 +906,7 @@ function updateMovieContainer() {
           }
         }).then((response) => response.json())
           .then((data) => {
-            document.getElementById("watchTvPlayer").removeAttribute('sandbox');
+            document.getElementById("watchMoviePlayer").removeAttribute('sandbox');
             //document.getElementById("watchMoviePlayer").setAttribute('sandbox', "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation");
             document.getElementById("watchMoviePlayer").setAttribute('src', `https://gomo.to/movie/${data.imdb_id}/`);
             //console.log(data);
@@ -918,8 +918,8 @@ function updateMovieContainer() {
 
     if (server === 6) {
       try {
-        document.getElementById("watchTvPlayer").removeAttribute('sandbox');
-        document.getElementById("watchTvPlayer").setAttribute('src', `https://superembed.streampal.repl.co/?video_id=${id}&tmdb=1`);
+        document.getElementById("watchMoviePlayer").removeAttribute('sandbox');
+        document.getElementById("watchMoviePlayer").setAttribute('src', `https://superembed.streampal.repl.co/?video_id=${id}&tmdb=1`);
         //document.getElementById("watchTvPlayer").removeAttribute('sandbox');
         /*var Loc = (server - 6);
         if (adServersList[Loc].server === "doodstream" || adServersList[Loc].server === "streamsb" || adServersList[Loc].server === "highload" || adServersList[Loc].server === "fembed" || adServersList[Loc].server === "vidcloud" || adServersList[Loc].server === "mixdrop") {

@@ -1025,6 +1025,7 @@ function getepisodes(n) {
   }
   if (document.cookie.split('; ').find((row) => row.startsWith('episode'))) {
     var episodecookie = document.cookie.split('; ').find((row) => row.startsWith('episode='))?.split('=')[1];
+    if (parseInt(episodecookie)===parseInt(i+1)){newelement.setAttribute('data-tag', 'checked');}
     updateTvPlayer(n, episodecookie);
     //updateTvAdServers(document.cookie.split('; ').find((row) => row.startsWith('watchId='))?.split('=')[1], n, episodecookie);
     //console.log('Howdy dudoidoo');

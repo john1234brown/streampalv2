@@ -6,6 +6,12 @@ var imdbId;
 var namee;
 var Id;
 var objlist = [];
+var adServersList = [];
+var AdServersInfo = {
+  'id': null,
+  'ep': null,
+  'season': null,
+}
 var Bookmarks = [];
 var BookmarksJson;
 
@@ -821,7 +827,7 @@ function updateSearchContainerbySearch() {
             for (var i = 0; data.total_pages > i; i++) {
               const pageelement = document.createElement("div");
               pageelement.innerHTML = `${(i + 1)}`;
-              pageelement.setAttribute("class", "card6");
+              pageelement.setAttribute("class", "card2");
               pageelement.setAttribute("onclick", `updateSearchContainerbyPage(${(i + 1)})`);
               //newelement.setAttribute("onclick", `cardclicked(${json.id}, "${json.name}", "tv");`);
               document.getElementById("pagelist").appendChild(pageelement);

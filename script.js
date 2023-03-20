@@ -6,12 +6,6 @@ var imdbId;
 var namee;
 var Id;
 var objlist = [];
-/*var adServersList = [];
-var AdServersInfo = {
-  'id': null,
-  'ep': null,
-  'season': null,
-}*/
 var Bookmarks = [];
 var BookmarksJson;
 
@@ -29,6 +23,8 @@ window.onbeforeunload = function(event) {
 
 //Register events in the onload to ensure elements are loaded!
 window.onload = async function() {
+
+  
   document.getElementById('logobutton').addEventListener('click', test);
   document.getElementById('searchbox').addEventListener('change', updateSearchContainerbySearch);
   document.getElementById('bookmarkButton').addEventListener('mouseover', bookmarkHovered);
@@ -36,7 +32,7 @@ window.onload = async function() {
   try {
   if (typeof navigator.serviceWorker !== 'undefined') {
     navigator.serviceWorker.register('pwabuilder-sw.js')
-  }} catch(e){console.log(e);}
+  }}catch (e){console.log(e);}
 
   if (localStorage.getItem('bookmarks')) {
     upgradeBookmarkVersion();
@@ -850,22 +846,7 @@ function updateSearchContainerbySearch() {
 function updateMovieContainer() {
   bookmarkInit();
   var id; //Here we will load it from the document cookies
-  var server = parseInt(document.cookie.split('; ').find((row) => row.startsWith('server='))?.split('=')[1]);
-  var i = 1;
-  for (var v of document.getElementsByName("server")) {
-    if (v.getAttribute('data-tag') === 'checked') {
-      //console.log('Found!');
-      v.removeAttribute('data-tag');
-    }
-    if (parseInt(i) === server) {
-      //console.log('YESS!')
-      v.setAttribute('data-tag', 'checked');
-    }
-    //console.log(server);
-    //console.log(i);
-    //console.log(v);
-    i = i + 1;
-  }
+  //var server = parseInt(document.cookie.split('; ').find((row) => row.startsWith('server='))?.split('=')[1]);
 
   if (document.cookie.split('; ').find((rowc) => rowc.startsWith('watchType=movie'))) {
     try {
@@ -954,22 +935,6 @@ function updateTvContainer() {
   bookmarkInit();
   var id; //Here we will load it from the document cookies
   var season = document.cookie.split('; ').find((row) => row.startsWith('season='))?.split('=')[1];
-  var server = parseInt(document.cookie.split('; ').find((row) => row.startsWith('server='))?.split('=')[1]);
-  var i = 1;
-  for (var v of document.getElementsByName("server")) {
-    if (v.getAttribute('data-tag') === 'checked') {
-      //console.log('Found!');
-      v.removeAttribute('data-tag');
-    }
-    if (parseInt(i) === server) {
-      //console.log('YESS!')
-      v.setAttribute('data-tag', 'checked');
-    }
-    //console.log(server);
-    //console.log(i);
-    //console.log(v);
-    i = i + 1;
-  }
   //var episode = document.cookie.split('; ').find((row) => row.startsWith('episode='))?.split('=')[1];
   if (document.cookie.split('; ').find((rowc) => rowc.startsWith('watchType=tv'))) {
 
@@ -1032,6 +997,7 @@ function updateTvContainer() {
 
 function updateServer(n) {
   const cookieValue = document.cookie.split('; ').find((row) => row.startsWith('server='))?.split('=')[1];
+  
   const cookieValue2 = document.cookie.split('; ').find((row) => row.startsWith('watchType='))?.split('=')[1];
   if (cookieValue === n) {
     return;
@@ -1056,6 +1022,22 @@ function updateServer(n) {
     d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
     var kia = "expires=" + d.toUTCString();
     document.cookie = "server=" + n + "; SameSite=strict; Secure; " + kia;
+    var server = parseInt(document.cookie.split('; ').find((row) => row.startsWith('server='))?.split('=')[1]);
+  var i = 1;
+  for (var v of document.getElementsByName("server")) {
+    if (v.getAttribute('data-tag') === 'checked' && (parseInt(i) === server)) {
+      //console.log('Found!');
+      v.removeAttribute('data-tag');
+    }
+    if (parseInt(i) === server) {
+      //console.log('YESS!')
+      v.setAttribute('data-tag', 'checked');
+    }
+    //console.log(server);
+    //console.log(i);
+    //console.log(v);
+    i = i + 1;
+  }
     if (cookieValue2 === "movie") { // is movie!
       updateMovieContainer();
     } else { // Else Tv show 
@@ -1114,10 +1096,6 @@ function getTvExternalIds(id) {
     });
 }
 
-function updateTvButtons() {
-
-}
-
 function updateTvPlayer(season, episode) {
   const d = new Date();
   d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
@@ -1154,6 +1132,22 @@ function updateTvPlayer(season, episode) {
       v.setAttribute('data-tag', 'checked');
     }
     //console.log(season);
+    //console.log(i);
+    //console.log(v);
+    i = i + 1;
+  }
+  var server = parseInt(document.cookie.split('; ').find((row) => row.startsWith('server='))?.split('=')[1]);
+  i = 1;
+  for (var v of document.getElementsByName("server")) {
+    if (v.getAttribute('data-tag') === 'checked') {
+      //console.log('Found!');
+      v.removeAttribute('data-tag');
+    }
+    if (parseInt(i) === server) {
+      //console.log('YESS!')
+      v.setAttribute('data-tag', 'checked');
+    }
+    //console.log(server);
     //console.log(i);
     //console.log(v);
     i = i + 1;

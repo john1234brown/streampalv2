@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
   <meta charset="UTF-8">
-  <!-- <meta http-equiv = 'cache-control' content = 'no-cache'>
-  <meta http-equiv = 'expires' content = '0'>
-  <meta http-equiv = 'pragma' content = 'no-cache'> --->
-  <meta name="keywords" content="seo, search engine optimization, streaming, streampal, free movies and tv shows, decentralized movies, decentralized tv shows, constant service, p2p streaming, peer 2 peer streaming, peer 2 peer movies, peer 2 peer tv shows"/>
-  <title> StreamPal: Decentralized Movies & TV Shows! Peer 2 Peer Streaming Coming Soon!</title>
-  <meta name="google-site-verification" content="JN2amSh4WLF0QfRH8UV9OSLT6_FOrwf9QE7zh7bZJ1U" />
+  <meta name="keywords"
+    content="seo, search engine optimization, streaming, streampal, free movies and tv shows, decentralized movies, decentralized tv shows, constant service, p2p streaming coming soon" />
+  <title> StreamPal: Decentralized Movies & TV Shows! P2P Streaming Coming Soon!</title>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/x-icon" href="assets/logos/TabLogo.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -140,7 +137,7 @@
             <li>Easy please head on over to the ipfs.tech website and get familiar with IPNS and how to publish to a
               IPNS once you learn that then your next step will be to download there IPFS Desktop App and then head on
               over to our ExamplePage!</li>
-            <li><a href="docs/index.html">Click me to head to the example page for more information!</a></li>
+            <li><a href="docs/example.html">Click me to head to the example page for more information!</a></li>
             <li>You will be required to submit your IPNS CID to our website using our File Provider Submit Page!</li>
           </ul>
         </li>
@@ -215,8 +212,10 @@
         <div class="cardContainerDiv1">
           <div class="cardContainerDiv2">
             <h3 class="cardContainerh3">Most Popular</h3>
-            <p><input type="checkbox" id="MostPopularMoviesMinimize" onclick="minimize(20, this)"> Minimize</input></p>
-            <p><input type="checkbox" id="MostPopularMoviesshowAll" onclick="tvshowAll(21, this)"> Show All</input></p>
+            <p><input type="checkbox" id="MostPopularMoviesMinimize" onclick="minimize(20, this)"></input></p>
+            <p tag="c">Minimize</p>
+            <p><input type="checkbox" id="MostPopularMoviesshowAll" onclick="tvshowAll(21, this)"></input></p>
+            <p tag="c">Show All</p>
           </div>
 
 
@@ -234,8 +233,10 @@
         <div class="cardContainerDiv1">
           <div class="cardContainerDiv02">
             <h3 class="cardContainerh3">Top IMDB</h3>
-            <p><input type="checkbox" id="IMDBTopMoviesMinimize" onclick="minimize(21, this)"> Minimize</input></p>
-            <p><input type="checkbox" id="IMDBTopMoviesshowAll" onclick="tvshowAll(20, this)"> Show All</input></p>
+            <p><input type="checkbox" id="IMDBTopMoviesMinimize" onclick="minimize(21, this)"></input></p>
+            <p tag="c">Minimize</p>
+            <p><input type="checkbox" id="IMDBTopMoviesshowAll" onclick="tvshowAll(20, this)"></input></p>
+            <p tag="c">Show All</p>
           </div>
           <div onclick="changeBorder3()" class="containerofCards">
             <ul id="IMDBTopmovielist" class="cards">
@@ -246,8 +247,10 @@
         <div class="cardContainerDiv1">
           <div class="cardContainerDiv2">
             <h3 class="cardContainerh3">Newest</h3>
-            <p><input type="checkbox" id="NewestMoviesMinimize" onclick="minimize(22, this)"> Minimize</input></p>
-            <p><input type="checkbox" id="NewestMoviesshowAll" onclick="tvshowAll(22, this)"> Show All</input></p>
+            <p><input type="checkbox" id="NewestMoviesMinimize" onclick="minimize(22, this)"></input></p>
+            <p tag="c">Minimize</p>
+            <p><input type="checkbox" id="NewestMoviesshowAll" onclick="tvshowAll(22, this)"></input></p>
+            <p tag="c">Show All</p>
           </div>
           <div class="containerofCards">
             <ul onclick="changeBorder4()" id="newestmovielist" class="cards">
@@ -259,7 +262,8 @@
         <div class="cardContainerDiv1">
           <div class="cardContainerDiv02">
             <h3 class="cardContainerh3">Stoner Collection</h3>
-            <p><input type="checkbox" id="StonerMoviesMinimize" onclick="minimize(23, this)"> Minimize</input></p>
+            <p><input type="checkbox" id="StonerMoviesMinimize" onclick="minimize(23, this)"></input></p>
+            <p tag="c">Minimize</p>
           </div>
           <div class="containerofCards">
             <ul onclick="changeBorder5()" id="stonermovielist" class="cards">
@@ -285,63 +289,70 @@
     <label class="tagSelector" for="tabtvshows" id="tabtvlabel"><b>TV Shows</b></label>
     <div class="tab">
       <h2 class="mainTitle">TV Shows</h2>
+      <div class="tabcontainer" id="TVListContainer">
+        <!-- Most Popular Container Beginning --->
+        <div class="cardContainerDiv1">
+          <div class="cardContainerDiv2">
+            <h3 class="cardContainerh3">Most Popular</h3>
+            <p><input type="checkbox" id="MostPopularTVMinimize"></input></p>
+            <p tag="c">Minimize</p>
+            <p><input type="checkbox" id="MostPopularTVshowAll" onclick="tvshowAll(3, this)"></input></p>
+            <p tag="c">Show All</p>
+          </div>
+          <!-- The Actual container list below that gets objects filled into it is the populartvlist ul object below V--->
+          <div class="containerofCards">
+            <ul onclick="changeBorder6()" id="populartvlist" class="cards">
+            </ul>
+          </div>
+        </div>
+        <!--- Most Popular Container End --->
 
-      <!-- Most Popular Container Beginning --->
-      <div class="cardContainerDiv1">
-        <div class="cardContainerDiv2">
-          <h3 class="cardContainerh3">Most Popular</h3>
-          <p><input type="checkbox" id="MostPopularTVMinimize"> Minimize</input></p>
-          <p><input type="checkbox" id="MostPopularTVshowAll" onclick="tvshowAll(3, this)"> Show All</input></p>
+
+
+        <!--- Top IMDB Container! --->
+        <div class="cardContainerDiv1">
+          <div class="cardContainerDiv02">
+            <h3 class="cardContainerh3">Top IMDB</h3>
+            <p><input type="checkbox" id="IMDBTopTVMinimize"></input></p>
+            <p tag="c">Minimize</p>
+            <p><input type="checkbox" id="IMDBTopTVshowAll" onclick="tvshowAll(1, this)"></input></p>
+            <p tag="c">Show All</p>
+          </div>
+          <div class="containerofCards">
+            <ul onclick="changeBorder7()" id="IMDBToptvlist" class="cards">
+            </ul>
+          </div>
         </div>
-        <!-- The Actual container list below that gets objects filled into it is the populartvlist ul object below V--->
-        <div class="containerofCards">
-          <ul onclick="changeBorder6()" id="populartvlist" class="cards">
-          </ul>
+
+
+        <div class="cardContainerDiv1">
+          <div class="cardContainerDiv2">
+            <h3 class="cardContainerh3">Newest</h3>
+            <p><input type="checkbox" id="NewestTVMinimize"></input></p>
+            <p tag="c">Minimize</p>
+            <p><input type="checkbox" id="NewestTVshowAll" onclick="tvshowAll(2, this)"></input></p>
+            <p tag="c">Show All</p>
+          </div>
+          <div class="containerofCards">
+            <ul onclick="changeBorder8()" id="newesttvlist" class="cards">
+            </ul>
+          </div>
         </div>
+
+        <div class="cardContainerDiv1">
+          <div class="cardContainerDiv02">
+            <h3 class="cardContainerh3">Stoner Flixs</h3>
+            <p><input type="checkbox" id="StonerTVMinimize" style="padding-bottom:0rem;"></input></p>
+            <p tag="c">Minimize</p>
+          </div>
+          <div class="containerofCards">
+            <ul onclick="changeBorder9()" id="stonertvlist" class="cards">
+            </ul>
+          </div>
+        </div>
+
+
       </div>
-      <!--- Most Popular Container End --->
-
-
-
-      <!--- Top IMDB Container! --->
-      <div class="cardContainerDiv1">
-        <div class="cardContainerDiv02">
-          <h3 class="cardContainerh3">Top IMDB</h3>
-          <p><input type="checkbox" id="IMDBTopTVMinimize"> Minimize</input></p>
-          <p><input type="checkbox" id="IMDBTopTVshowAll" onclick="tvshowAll(1, this)"> Show All</input></p>
-        </div>
-        <div class="containerofCards">
-          <ul onclick="changeBorder7()" id="IMDBToptvlist" class="cards">
-          </ul>
-        </div>
-      </div>
-
-
-      <div class="cardContainerDiv1">
-        <div class="cardContainerDiv2">
-          <h3 class="cardContainerh3">Newest</h3>
-          <p><input type="checkbox" id="NewestTVMinimize"> Minimize</input></p>
-          <p><input type="checkbox" id="NewestTVshowAll" onclick="tvshowAll(2, this)"> Show All</input></p>
-        </div>
-        <div class="containerofCards">
-          <ul onclick="changeBorder8()" id="newesttvlist" class="cards">
-          </ul>
-        </div>
-      </div>
-
-      <div class="cardContainerDiv1">
-        <div class="cardContainerDiv02">
-          <h3 class="cardContainerh3">Stoner Flixs</h3>
-          <p><input type="checkbox" id="StonerTVMinimize" style="padding-bottom:0rem;"> Minimize</input></p>
-        </div>
-        <div class="containerofCards">
-          <ul onclick="changeBorder9()" id="stonertvlist" class="cards">
-          </ul>
-        </div>
-      </div>
-
-
-
     </div>
 
     <!--- End of TV Shows Tab --->
@@ -459,7 +470,7 @@
         <div id="episodecontainer" class="containerofCards2">
           <h2 class="mainTitleseasons">Episodes</h2>
           <div id="listofepisodes" class="cards2">
-            <div class="card2">Episode 1</div>
+            <div data-tag='checked' class="card2">Episode 1</div>
           </div>
         </div>
       </div>
@@ -487,10 +498,8 @@
   <img class="footerClassImg" src="assets/footers/banner.png">
   <p class="footerClass">
   <div class="footerTitle">&copy; &reg;2023 StreamPal MIT
-    <div><a href="mailto:john1234brown23@gmail.com?subject=ContactatStreamPal&amp;body=Message from StreamPal site. : "
-        style="color:rgba(159, 71, 241, 0.897)  ">Contact</a> 
-      <a href="mailto:jthompson0377@gmail.com?subject=ContactatStreamPal&amp;body=Message from StreamPal site. : "
-        style="color:rgba(159, 71, 241, 0.897)  ">Conspirator Contact</a>
+    <div> <a href="mailto:john1234brown23@gmail.com?subject=ContactatStreamPal&amp;body=Message from StreamPal site. : "
+        style="color:rgba(159, 71, 241, 0.897)  ">Contact</a>
     </div>
 
 </footer>

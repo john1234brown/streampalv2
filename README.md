@@ -36,7 +36,7 @@
 # Our Goals
 - We wish to decentralize video streaming of movies and tv shows along with making it as mobile friendly as netflix or plutotv or tubi but instead of using a app you can do it straight through the browser
 - We hope to be able to cut down loads of ads by sandboxing the embedded video players but sadly some servers detect sandbox so for those servers we recommend using the Brave browser
-- We hope you enjoy our site and as always we wish to remain as legal as possible which is why we dont directly host any content which is listed on our website so we don't break any copyright infringment.
+- We hope you enjoy our site and as always we wish to remain as legal as possible which is why we don't directly host any content which is listed on our website and neither are we affiliated with the providers in anyway so we are not held liable for any content that may break any copyright infringments.
 
 
 # Disclaimer

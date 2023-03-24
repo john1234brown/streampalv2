@@ -5,7 +5,7 @@ document.getElementById("tabhome").addEventListener("click", returnhome);
 
 function returnhome(){
     console.log(window.location.href);
-    window.location.replace("/index.html");
+    window.location.replace("./index.html");
 }
 
 

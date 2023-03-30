@@ -30,15 +30,16 @@ window.onbeforeunload = function(event) {
 //Register events in the onload to ensure elements are loaded!
 window.onload = async function() {
 
-  
+
   document.getElementById('logobutton').addEventListener('click', test);
   document.getElementById('searchbox').addEventListener('change', updateSearchContainerbySearch);
   document.getElementById('bookmarkButton').addEventListener('mouseover', bookmarkHovered);
   document.getElementById('bookmarkButton').addEventListener('mouseout', bookmarkHovered);
   try {
-  if (typeof navigator.serviceWorker !== 'undefined') {
-    navigator.serviceWorker.register('pwabuilder-sw.js')
-  }}catch (e){console.log(e);}
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.register('pwabuilder-sw.js')
+    }
+  } catch (e) { console.log(e); }
 
   if (localStorage.getItem('bookmarks')) {
     upgradeBookmarkVersion();
@@ -159,32 +160,33 @@ function updatewatchIdAndEtc(id, type, name) {
 }
 
 async function updateWatchHistoryContainers() {
-  if (localStorage.getItem('watch-history')) {
-    document.getElementById('watchHistory').removeAttribute('style');
-    var historyJson = JSON.parse(localStorage.getItem('watch-history'));
-    document.getElementById("tvHistorylist").innerHTML = "";
-    document.getElementById("movieHistorylist").innerHTML = "";
-    for (var tvobj of historyJson.tv.reverse()) {
-      //console.log(tvobj);
-      fetch(`https://api.themoviedb.org/3/tv/${tvobj.id}?language=en-US`, {
-        method: 'GET',
-        headers: {
-          'authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYTljY2JkNDViNmY1MTJjN2E0YWZmMzA5MjIxZDgyOCIsInN1YiI6IjYzZDBhM2M3NjZhZTRkMDA5ZTlkZjY4MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.N5j1M7YnwmMTjIWMdYQbdh5suW2hCDucbqlDgMku_UA',
-          'content-type': 'application/json;charset=utf-8'
-        }
-      }).then((response) => response.json())
-        .then((json) => {
-          //console.log(data);
-          //console.log(json.media_type);
-          var overview;
-          if (json.overview) {
-            overview = json.overview.substring(0, 200);
-          } else {
-            overview = "";
+  try {
+    if (localStorage.getItem('watch-history')) {
+      document.getElementById('watchHistory').removeAttribute('style');
+      var historyJson = JSON.parse(localStorage.getItem('watch-history'));
+      document.getElementById("tvHistorylist").innerHTML = "";
+      document.getElementById("movieHistorylist").innerHTML = "";
+      for (var tvobj of historyJson.tv.reverse()) {
+        //console.log(tvobj);
+        fetch(`https://api.themoviedb.org/3/tv/${tvobj.id}?language=en-US`, {
+          method: 'GET',
+          headers: {
+            'authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYTljY2JkNDViNmY1MTJjN2E0YWZmMzA5MjIxZDgyOCIsInN1YiI6IjYzZDBhM2M3NjZhZTRkMDA5ZTlkZjY4MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.N5j1M7YnwmMTjIWMdYQbdh5suW2hCDucbqlDgMku_UA',
+            'content-type': 'application/json;charset=utf-8'
           }
-          if (json.first_air_date) {
-            const newelement = document.createElement("li");
-            newelement.innerHTML = `<figure class="card__thumbnail"></figure> \
+        }).then((response) => response.json())
+          .then((json) => {
+            //console.log(data);
+            //console.log(json.media_type);
+            var overview;
+            if (json.overview) {
+              overview = json.overview.substring(0, 200);
+            } else {
+              overview = "";
+            }
+            if (json.first_air_date) {
+              const newelement = document.createElement("li");
+              newelement.innerHTML = `<figure class="card__thumbnail"></figure> \
                     <h3 class="card-title">${json.name}</h3> \
                     <div class="card-content"> \
                       <h3>Description</h3> \
@@ -193,34 +195,34 @@ async function updateWatchHistoryContainers() {
                     <div class="card-link-wrapper"> \
                       <p class="card-link">${json.first_air_date.split("-")[0]}</p> \
                     </div>`
-            newelement.setAttribute("style", `background:url('https://image.tmdb.org/t/p/original${json.poster_path}'); background-repeat: no-repeat; background-size: cover; background-position: center;`);
-            newelement.setAttribute("id", json.id);
-            newelement.setAttribute("class", "card");
-            newelement.setAttribute("onclick", `cardclicked(${json.id}, "${json.name}", "tv");`);
-            document.getElementById("tvHistorylist").appendChild(newelement);
+              newelement.setAttribute("style", `background:url('https://image.tmdb.org/t/p/original${json.poster_path}'); background-repeat: no-repeat; background-size: cover; background-position: center;`);
+              newelement.setAttribute("id", json.id);
+              newelement.setAttribute("class", "card");
+              newelement.setAttribute("onclick", `cardclicked(${json.id}, "${json.name}", "tv");`);
+              document.getElementById("tvHistorylist").appendChild(newelement);
+            }
+          }).catch(e => {
+            //console.log(e);
+          });
+      }
+      for (var movieobj of historyJson.movies.reverse()) {
+        //console.log(movieobj);
+        fetch(`https://api.themoviedb.org/3/movie/${movieobj.id}?language=en-US`, {
+          method: 'GET',
+          headers: {
+            'authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYTljY2JkNDViNmY1MTJjN2E0YWZmMzA5MjIxZDgyOCIsInN1YiI6IjYzZDBhM2M3NjZhZTRkMDA5ZTlkZjY4MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.N5j1M7YnwmMTjIWMdYQbdh5suW2hCDucbqlDgMku_UA',
+            'content-type': 'application/json;charset=utf-8'
           }
-        }).catch(e => {
-          //console.log(e);
-        });
-    }
-    for (var movieobj of historyJson.movies.reverse()) {
-      //console.log(movieobj);
-      fetch(`https://api.themoviedb.org/3/movie/${movieobj.id}?language=en-US`, {
-        method: 'GET',
-        headers: {
-          'authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYTljY2JkNDViNmY1MTJjN2E0YWZmMzA5MjIxZDgyOCIsInN1YiI6IjYzZDBhM2M3NjZhZTRkMDA5ZTlkZjY4MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.N5j1M7YnwmMTjIWMdYQbdh5suW2hCDucbqlDgMku_UA',
-          'content-type': 'application/json;charset=utf-8'
-        }
-      }).then((response) => response.json())
-        .then((json) => {
-          var overview;
-          if (json.overview) {
-            overview = json.overview.substring(0, 200);
-          } else {
-            overview = "";
-          }
-          const newelement = document.createElement("li");
-          newelement.innerHTML = `<figure class="card__thumbnail"></figure> \
+        }).then((response) => response.json())
+          .then((json) => {
+            var overview;
+            if (json.overview) {
+              overview = json.overview.substring(0, 200);
+            } else {
+              overview = "";
+            }
+            const newelement = document.createElement("li");
+            newelement.innerHTML = `<figure class="card__thumbnail"></figure> \
                     <h3 class="card-title">${json.title}</h3> \
                     <div class="card-content"> \
                       <h3>Description</h3> \
@@ -229,15 +231,18 @@ async function updateWatchHistoryContainers() {
                     <div class="card-link-wrapper"> \
                       <p class="card-link">${json.release_date.split("-")[0]}</p> \
                     </div>`
-          newelement.setAttribute("style", `background:url('https://image.tmdb.org/t/p/original${json.poster_path}'); background-repeat: no-repeat; background-size: cover; background-position: center;`);
-          newelement.setAttribute("id", json.id);
-          newelement.setAttribute("class", "card");
-          newelement.setAttribute("onclick", `cardclicked(${json.id}, "${json.title}", "movie");`);
-          document.getElementById("movieHistorylist").appendChild(newelement);
-        }).catch(e => {
-          //console.log(e);
-        });
+            newelement.setAttribute("style", `background:url('https://image.tmdb.org/t/p/original${json.poster_path}'); background-repeat: no-repeat; background-size: cover; background-position: center;`);
+            newelement.setAttribute("id", json.id);
+            newelement.setAttribute("class", "card");
+            newelement.setAttribute("onclick", `cardclicked(${json.id}, "${json.title}", "movie");`);
+            document.getElementById("movieHistorylist").appendChild(newelement);
+          }).catch(e => {
+            //console.log(e);
+          });
+      }
     }
+  } catch (e) {
+    console.log(e);
   }
 }
 
@@ -850,11 +855,15 @@ function updateSearchContainerbySearch() {
 }
 
 function updateMovieContainer() {
+  var id = document.cookie.split('; ').find((row) => row.startsWith('watchId='))?.split('=')[1];
   bookmarkInit();
-  var id; //Here we will load it from the document cookies
   //var server = parseInt(document.cookie.split('; ').find((row) => row.startsWith('server='))?.split('=')[1]);
-
-  if (document.cookie.split('; ').find((rowc) => rowc.startsWith('watchType=movie'))) {
+  //var id; //Here we will load it from the document cookies
+  var server = parseInt(document.cookie.split('; ').find((row) => row.startsWith('server='))?.split('=')[1]);
+  var watchType = document.cookie.split('; ').find((row) => row.startsWith('watchType='))?.split('=')[1];
+  console.log(watchType);
+  console.log(server);
+  if (watchType === 'movie') {
     try {
       document.getElementById("watchTvPlayer").removeAttribute('src');
       document.getElementById("watchMoviePlayer").removeAttribute('style');
@@ -875,6 +884,7 @@ function updateMovieContainer() {
         }
       }).then((response) => response.json())
         .then((data) => {
+          console.log(data);
           //document.getElementById("watchTvPlayer").removeAttribute('sandbox');
           document.getElementById("watchMoviePlayer").setAttribute('sandbox', "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation");
           document.getElementById("watchMoviePlayer").setAttribute('src', `https://dbgo.fun/imdb.php?id=${data.imdb_id}`);
@@ -885,12 +895,12 @@ function updateMovieContainer() {
     }
     if (server === 2) {
       document.getElementById("watchMoviePlayer").setAttribute('sandbox', "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation");
-      document.getElementById("watchMoviePlayer").setAttribute('src', `https://databasegdriveplayer.xyz/player.php?tmdb=${id}`);//13612
+      document.getElementById("watchMoviePlayer").setAttribute('src', 'https://databasegdriveplayer.xyz/player.php?tmdb=' +id+'/');//13612
     }
     if (server === 3) {
       document.getElementById("watchMoviePlayer").removeAttribute('sandbox');
       //document.getElementById("watchMoviePlayer").setAttribute('sandbox', "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation");
-      document.getElementById("watchMoviePlayer").setAttribute('src', `https://v2.vidsrc.me/embed/${id}/`);//13612
+      document.getElementById("watchMoviePlayer").setAttribute('src', 'https://v2.vidsrc.me/embed/'+id+'/');//13612
     }
 
     if (server === 4) {
@@ -901,7 +911,7 @@ function updateMovieContainer() {
 
     if (server === 5) {
       try {
-        document.getElementById("WatchMoviePlayer").removeAttribute('sandbox');
+        document.getElementById("watchMoviePlayer").removeAttribute('sandbox');
         fetch(`https://api.themoviedb.org/3/movie/${id}/external_ids`, {
           method: 'GET',
           headers: {
@@ -910,7 +920,8 @@ function updateMovieContainer() {
           }
         }).then((response) => response.json())
           .then((data) => {
-            document.getElementById("watchmoviePlayer").removeAttribute('sandbox');
+            console.log(data);
+            document.getElementById("watchMoviePlayer").removeAttribute('sandbox');
             //document.getElementById("watchMoviePlayer").setAttribute('sandbox', "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation");
             document.getElementById("watchMoviePlayer").setAttribute('src', `https://gomo.to/movie/${data.imdb_id}/`);
             //console.log(data);
@@ -919,11 +930,13 @@ function updateMovieContainer() {
           });
       } catch (e) { //console.log(e); }
       }
+    }
 
       if (server === 6) {
         try {
+          console.log('updating to server 6',server);
           document.getElementById("watchMoviePlayer").removeAttribute('sandbox');
-          document.getElementById("watchMoviePlayer").setAttribute('src', `https://superembed.streampal.repl.co/?video_id=${id}&tmdb=1`);
+          document.getElementById("watchMoviePlayer").setAttribute('src', 'https://superembed.streampal.repl.co/?video_id='+id+'&tmdb=1');
           //document.getElementById("watchTvPlayer").removeAttribute('sandbox');
           /*var Loc = (server - 6);
           if (adServersList[Loc].server === "doodstream" || adServersList[Loc].server === "streamsb" || adServersList[Loc].server === "highload" || adServersList[Loc].server === "fembed" || adServersList[Loc].server === "vidcloud" || adServersList[Loc].server === "mixdrop") {
@@ -933,7 +946,6 @@ function updateMovieContainer() {
           //document.getElementById("watchMoviePlayer").setAttribute('src', adServersList[Loc].url);
         } catch (e) { return; }
       }
-    }
   }
 }
 
@@ -1003,7 +1015,7 @@ function updateTvContainer() {
 
 function updateServer(n) {
   const cookieValue = document.cookie.split('; ').find((row) => row.startsWith('server='))?.split('=')[1];
-  
+
   const cookieValue2 = document.cookie.split('; ').find((row) => row.startsWith('watchType='))?.split('=')[1];
   if (cookieValue === n) {
     return;
@@ -1028,22 +1040,23 @@ function updateServer(n) {
     d.setTime(d.getTime() + (7 * 24 * 60 * 60 * 1000));
     var kia = "expires=" + d.toUTCString();
     document.cookie = "server=" + n + "; SameSite=strict; Secure; " + kia;
-    var server = parseInt(document.cookie.split('; ').find((row) => row.startsWith('server='))?.split('=')[1]);
-  var i = 1;
-  for (var v of document.getElementsByName("server")) {
-    if (v.getAttribute('data-tag') === 'checked' && (parseInt(i) === server)) {
-      //console.log('Found!');
-      v.removeAttribute('data-tag');
+    //var server = parseInt(document.cookie.split('; ').find((row) => row.startsWith('server='))?.split('=')[1]);
+    server = n;
+    var i = 1;
+    for (var v of document.getElementsByName("server")) {
+      if (v.getAttribute('data-tag') === 'checked' && (parseInt(i) !== server)) {
+        //console.log('Found!');
+        v.removeAttribute('data-tag');
+      }
+      if (parseInt(i) === server) {
+        //console.log('YESS!')
+        v.setAttribute('data-tag', 'checked');
+      }
+      //console.log(server);
+      //console.log(i);
+      //console.log(v);
+      i = i + 1;
     }
-    if (parseInt(i) === server) {
-      //console.log('YESS!')
-      v.setAttribute('data-tag', 'checked');
-    }
-    //console.log(server);
-    //console.log(i);
-    //console.log(v);
-    i = i + 1;
-  }
     if (cookieValue2 === "movie") { // is movie!
       updateMovieContainer();
     } else { // Else Tv show 

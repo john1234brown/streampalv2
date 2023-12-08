@@ -4,11 +4,11 @@
   "dir": "auto",
   "display": "fullscreen",
   "name": "StreamPal",
-  "id": "https://john1234brown.github.io/",
+  "id": "https://john1234brown.github.io/Streampal",
   "orientation": "any",
   "scope": "https://john1234brown.github.io/streampalv2/",
   "short_name": "StreamPal",
-  "start_url": "https://john1234brown.github.io/streampalv2/",
+  "start_url": "https://watch.dblockbuster.com",
   "theme_color": "#a56ee7",
   "categories": [
     "entertainment",

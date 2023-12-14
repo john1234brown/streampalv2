@@ -465,14 +465,20 @@
     {
       "src": "https://watch.dblockbuster.com/assets/ios/512.png",
       "sizes": "512x512",
-	    "purpose": "any"
+      "purpose": "any"
     },
     {
       "src": "https://watch.dblockbuster.com/assets/ios/1024.png",
       "sizes": "1024x1024"
     }
   ],
-  "shortcuts": [],
+  "shortcuts": [
+    {
+      "name": "Alternate link",
+      "url": "https://play.dblockbuster.com",
+      "description": "Alternate link for the site"
+    }
+  ],
   "lang": "en",
   "iarc_rating_id": "21",
   "prefer_related_applications": false

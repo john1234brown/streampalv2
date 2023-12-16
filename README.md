@@ -33,6 +33,15 @@
 - Along with including URL list editor tool to help with providing URLS for the sources and eventually i imagine someone will take this strucuture design and automate the upload of files and storing of urls to be a URL provider
 
 #   Updates
+# 12/1/23
+I own dblockbuster.com and streampal has been moved to one of its subdomain.
+I have successfully streamed in the browser without nowhere near the wait time we had like ipfs using DBlockbuster working on pushing for production release to get ready to implement to the site.
+Electron File Provider Application has implemented the new dblockbuster service and deprecated the old sse aka server sent events with post endpoint to respond p2p protocol. now it utilizes websockets using the same relay system instead finally got to around to implementing anybody providing a server to relay to the network unlike before we had are set servers.
+I would personally like to thank everyone for being patient with me along this journey of taking on multiple projects at once.
+Also I hope yall are enjoying our already existing server providers if you haven't already be sure to download the pwa through brave browser with brave shield enabled to get ad free experience!
+
+# 11/3/23 
+We deprecated the concept and implementation of ipfs due to the slow serving speeds, inconsistencies of files. We have started the development of a new service which will still offer the zero ads and autoplay experience we where hoping for https://github.com/john1234brown/D-Blockbuster/
 # 3/11/23
 - Currently have a working Electron Node JS Application for File providers to be able to provide through smee just finishing on touching it up and making it easier to use with some drag and drop functions before releasing along with some configuration options which is going to require me to redo some of it quite a bit of its coding actually so it will be coming out soon Also Another Project will be working on is the Cache Database Provider incase there node is not receiving smee msgs but they where cached by database provider the database provider will ensure the file providers files will be accessible! basically this just listens in on them keeps a db of there ping.json Structure each provider you have that can provide a file you post a array list of them to the smee ensuring the system stays running! probably gonna have to include file size checks to ensure files wont go over something like 120mbs or something like this!
 - if you want to peep the nodeJS application you can at the replit link here https://replit.com/@JohnsFriends/StreamPal-Browser-Tool-In-NodeJS?v=1 havent pushed the electron update to the replit yet but will soon once i finish up the final touches!

@@ -1,4 +1,8 @@
 # Streampalv2
+
+![CM-Badge-2](https://github.com/john1234brown/streampalv2/assets/8825800/54816a26-d88b-4fa2-a86c-3ecc1689251f)
+
+
 - Free Streaming Search Engine Website called StreamPal which doesnt host any files directly on its site.
 - With a P2P Video Providing Service Included ontop of the search engine design!
 # We have updated to a newer method utilizing DBlockbuster instead of IPFS So please ignore most of this below except for the Decentralized stuff, and the autoplay function that will be coming soon...
